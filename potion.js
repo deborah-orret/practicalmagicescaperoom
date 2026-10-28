@@ -115,7 +115,6 @@ document.getElementById('drinkPotion').addEventListener('click', () => {
   endGameImage.hidden = false;
   endGameImage.alt = message;
   endGameImage.src = `assets/potionassets/${won ? 'endGameWin' : 'endGameDie'}.png`;
-  document.getElementById('endGameText').textContent = won ? message : '';
   resultView.hidden = true;
   endGame.hidden = false;
   returnToGarden.hidden = won;
