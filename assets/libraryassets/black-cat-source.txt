@@ -1,0 +1,6 @@
+Black Cat sprite sheet by Ranz F., downloaded from Petdex:
+https://petdex.dev/pets/black-cat-realistic-v1
+https://assets.petdex.dev/pets/black-cat-realistic-v1-6e94d3045e4a/sprite.webp
+
+The source page identifies the creator but does not clearly state a reuse license.
+Confirm permission or licensing before distributing the game with this asset.

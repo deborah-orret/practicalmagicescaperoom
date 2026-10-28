@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practical Magic — Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="library.css" />
+  <script src="library-books.js" defer></script>
+  <script src="library.js" defer></script>
+</head>
+<body class="library-page">
+  <main class="page">
+    <div class="library-stage" id="libraryStage">
+      <img
+        class="library-image"
+        src="assets/libraryassets/library.png"
+        alt="Shelves filled with books"
+        draggable="false"
+      />
+      <div class="library-cat" id="libraryCat" role="img" aria-label="Magpie the black cat"></div>
+      <div class="library-search" id="librarySearch">
+        <img src="assets/libraryassets/catmessage.png" alt="Magpie is an avid reader and can help you find any book you need. Type in the title and she'll push it off the shelf." />
+        <label for="bookSearch">Find a book</label>
+        <div class="book-picker">
+          <div class="book-picker-field">
+            <input id="bookSearch" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="bookTitles" placeholder="Choose a book title..." autocomplete="off" />
+            <button type="button" id="toggleBooks" aria-label="Show book titles" tabindex="-1">▾</button>
+          </div>
+          <div class="book-options" id="bookTitles" role="listbox" hidden></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- SIMPLE IMAGE OVERLAY -->
+  <div class="overlay" id="imageOverlay" hidden>
+    <button class="close-button" id="closeImageOverlay" aria-label="Close book">×</button>
+    <img id="overlayImage" class="overlay-image" alt="" />
+  </div>
+</body>
+</html>
