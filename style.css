@@ -1,0 +1,500 @@
+
+/* ==========================================
+   PRACTICAL MAGIC — KYLIE'S DESK
+   ========================================== */
+
+/* GLOBAL STYLES */
+
+:root {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #fdfdfc;
+  background: #201814;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.masthead {
+  max-width: 1480px;
+  margin: auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.masthead h1 {
+  margin: 0;
+  font-size: clamp(22px, 2.6vw, 36px);
+  font-weight: normal;
+}
+
+.masthead p {
+  color: #050505;
+  font: 14px system-ui;
+  margin: 0 0 5px;
+}
+
+.eyebrow {
+  font: 10px system-ui;
+  letter-spacing: 2.5px;
+  color: #080808;
+}
+
+/* ==========================================
+   MAIN DESK
+   ========================================== */
+
+main {
+  max-width: 1480px;
+  margin: auto;
+  padding: 0 8px 20px;
+}
+
+.desk-stage {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+  user-select: none;
+}
+
+.desk-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Clickable desk objects */
+
+.hotspot {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: var(--h);
+  margin: 0;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 14px;
+  background: transparent;
+  cursor: pointer;
+  line-height: normal;
+  transition: background 0.18s, border 0.18s;
+  z-index: 1;
+}
+
+.hotspot span {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, 4px);
+  background: #201814e8;
+  color: #ffffff;
+  padding: 5px 9px;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  font: 12px system-ui;
+}
+
+.hotspot:hover span,
+.hotspot:focus-visible span {
+
+}
+
+.hotspot:hover,
+.hotspot:focus-visible {
+
+}
+
+.show-hotspots .hotspot {
+  background: #ffcc0040;
+  border: 2px dashed #ffffff;
+}
+
+/* Instructions */
+
+.hint {
+  font: 12px system-ui;
+  color: #080807;
+  margin: 12px 8px;
+}
+
+kbd {
+  background: #59453d;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ==========================================
+   POPUP OVERLAYS
+   ========================================== */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+/* Floating letters, notes, and Polaroids */
+
+.overlay-image {
+  display: block;
+  max-width: 85vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.35));
+}
+
+/* Interactive panels */
+
+.panel-content {
+  width: 85vw;
+  max-width: 1100px;
+  height: 85vh;
+  background: #ffffff;
+  color: #2c241e;
+  border-radius: 16px;
+  overflow: auto;
+  padding: 24px;
+}
+
+/* Close button */
+
+.close-button {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ==========================================
+   GENERAL INTERACTIVE CONTENT
+   ========================================== */
+
+.note-panel {
+  max-width: 680px;
+  margin: auto;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  line-height: 1.65;
+}
+
+.note-panel h3 {
+  margin-top: 0;
+}
+
+.placeholder {
+  margin: 20px auto;
+  max-width: 620px;
+  font: 15px/1.7 system-ui;
+}
+
+.placeholder code {
+  background: #f6f3ef;
+  padding: 2px 4px;
+}
+
+.footnote {
+  font: 12px/1.6 system-ui;
+  color: #796451;
+}
+
+.primary {
+  cursor: pointer;
+  border: none;
+  background: #594333;
+  color: white;
+  padding: 11px 17px;
+  border-radius: 8px;
+  font: 14px system-ui;
+}
+
+.secondary {
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  background: #ffffff;
+  color: #49392b;
+  padding: 9px 14px;
+  border-radius: 8px;
+  font: 13px system-ui;
+}
+
+/* ==========================================
+   FAMILY TREE PANEL
+   ========================================== */
+
+.family-tree-panel {
+  width: 100%;
+  min-width: 0;
+}
+
+.family-tree-panel h2 {
+  margin: 0 0 8px;
+  text-align: center;
+  font-weight: normal;
+  font-size: 26px;
+}
+
+.family-tree-panel p {
+  font: 13px/1.5 system-ui;
+  color: #6e5e50;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+/* Tree on left, portraits on right */
+
+.family-tree-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) 150px;
+  gap: 20px;
+  align-items: start;
+  width: 100%;
+}
+
+/* Vertical family tree */
+
+.tree-board {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  min-width: 0;
+  margin: 0 auto;
+}
+
+.tree-background {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ==========================================
+   FAMILY TREE DROP ZONES
+   ========================================== */
+
+.tree-slot {
+  position: absolute;
+  width: 14%;
+  aspect-ratio: 1 / 1.25;
+  transform: translate(-50%, -50%);
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tree-slot:hover,
+.tree-slot.drag-over {
+  border: 2px dashed rgba(90, 65, 45, 0.6);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================
+   DRAGGABLE FAMILY PORTRAITS
+   ========================================== */
+
+.portrait-card {
+  cursor: grab;
+  user-select: none;
+}
+
+.portrait-card:active {
+  cursor: grabbing;
+}
+
+.portrait-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+/* Portraits placed on family tree */
+
+.tree-slot .portrait-card {
+  width: 100%;
+  height: 100%;
+}
+
+.tree-slot .portrait-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ==========================================
+   PORTRAIT SIDEBAR
+   ========================================== */
+
+.portrait-bank {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  width: 150px;
+  max-height: 70vh;
+
+  padding: 12px;
+  overflow-y: auto;
+
+  border: 1px solid #dbd7d2;
+  border-radius: 10px;
+  background: #f7f7f7;
+}
+
+.portrait-bank .portrait-card {
+  width: 110px;
+  flex-shrink: 0;
+}
+
+/* Optional scrollbar styling */
+
+.portrait-bank::-webkit-scrollbar {
+  width: 6px;
+}
+
+.portrait-bank::-webkit-scrollbar-track {
+  background: #f8f7f7;
+  border-radius: 10px;
+}
+
+.portrait-bank::-webkit-scrollbar-thumb {
+  background: #f2f2f2;
+  border-radius: 10px;
+}
+
+/* ==========================================
+   EMBEDDED APP LAB PHONE
+   ========================================== */
+
+#phoneOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.65);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#phoneOverlay[hidden] {
+  display: none;
+}
+
+.phone-container {
+  width: 392px;
+  max-width: 95vw;
+  height: min(620px, 90vh);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+}
+
+/* ==========================================
+   RESPONSIVE LAYOUT
+   ========================================== */
+
+@media (max-width: 700px) {
+
+  /* Header */
+
+  .masthead {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  /* Desk remains large enough to inspect */
+
+  .desk-stage {
+    min-width: 600px;
+  }
+
+  main {
+    overflow-x: auto;
+  }
+
+  /* Interactive panel */
+
+  .panel-content {
+    width: 95vw;
+    height: 90vh;
+    padding: 12px;
+  }
+
+  /* Keep portraits BESIDE the tree */
+
+  .family-tree-layout {
+    grid-template-columns: minmax(0, 1fr) 100px;
+    gap: 10px;
+  }
+
+  .portrait-bank {
+    width: 100px;
+    padding: 6px;
+    gap: 8px;
+  }
+
+  .portrait-bank .portrait-card {
+    width: 80px;
+  }
+
+  .family-tree-panel h2 {
+    font-size: 21px;
+  }
+
+  .family-tree-panel p {
+    font-size: 11px;
+  }
+
+  /* Smaller phone screens */
+
+  .phone-container {
+    max-width: 95vw;
+    height: min(620px, 90vh);
+  }
+}

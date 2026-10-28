@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practical Magic — Kylie's Desk</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+  
+<body>
+  <main class="page">
+    <div class="desk-stage" id="deskStage">
+      <img
+        class="desk-image"
+        src="assets/desk.png"
+        alt="Kylie's desk"
+        draggable="false"
+      />
+
+      <!-- PHONE -->
+      <button
+        class="hotspot"
+        data-view="phone"
+        style="--x:85%; --y:48%; --w:13%; --h:19%;"
+        aria-label="Open Kylie's phone"
+      ></button>
+
+      <!-- FAMILY TREE / CRUMPLED PAGE -->
+      <button
+        class="hotspot"
+        data-view="tree"
+        style="--x:44%; --y:34%; --w:10%; --h:13%;"
+        aria-label="Open family tree"
+      ></button>
+
+      <!-- NOTE TO TONI -->
+      <button
+        class="hotspot"
+        data-view="note"
+        style="--x:80%; --y:63%; --w:16%; --h:26%;"
+        aria-label="Read note to Toni"
+      ></button>
+
+      <!-- LETTER TO VINCENT -->
+      <button
+        class="hotspot"
+        data-view="letterToVictor"
+        style="--x:3%; --y:43%; --w:21%; --h:15%;"
+        aria-label="Read letter to Vincent"
+      ></button>
+
+      <!-- LETTER TO SALLY -->
+      <button
+        class="hotspot"
+        data-view="letterToSally"
+        style="--x:57%; --y:53%; --w:21%; --h:18%;"
+        aria-label="Read letter to Sally"
+      ></button>
+
+      <!-- LETTER TO GINA -->
+      <button
+        class="hotspot"
+        data-view="letterToGina"
+        style="--x:52%; --y:73%; --w:24%; --h:20%;"
+        aria-label="Read letter to Gina"
+      ></button>
+
+      <!-- JOURNAL -->
+      <button
+        class="hotspot"
+        data-view="journal"
+        style="--x:10%; --y:62%; --w:24%; --h:31%;"
+        aria-label="Open journal"
+      ></button>
+
+      <!-- SPELL BOOK -->
+      <button
+        class="hotspot"
+        data-view="spellbook"
+        style="--x:63%; --y:10%; --w:35%; --h:32%;"
+        aria-label="Open spell book"
+      ></button>
+
+      <!-- POLAROIDS -->
+      <button
+        class="hotspot"
+        data-view="polGina"
+        style="--x:47%; --y:59%; --w:9%; --h:15%;"
+        aria-label="Open Gina polaroid"
+      ></button>
+
+      <button
+        class="hotspot"
+        data-view="polSally"
+        style="--x:70%; --y:62%; --w:9%; --h:13%;"
+        aria-label="Open Sally polaroid"
+      ></button>
+
+      <button
+        class="hotspot"
+        data-view="polKylie"
+        style="--x:9%; --y:79%; --w:9%; --h:12%;"
+        aria-label="Open Kylie polaroid"
+      ></button>
+    </div>
+  </main>
+
+  <!-- SIMPLE IMAGE OVERLAY -->
+  <div class="overlay" id="imageOverlay" hidden>
+    <button class="close-button" id="closeImageOverlay" aria-label="Close">×</button>
+    <img id="overlayImage" class="overlay-image" src="" alt="" />
+  </div>
+
+  <!-- INTERACTIVE PANEL OVERLAY -->
+  <div class="overlay" id="panelOverlay" hidden>
+    <button class="close-button" id="closePanelOverlay" aria-label="Close">×</button>
+    <div id="panelContent" class="panel-content"></div>
+  </div>
+
+  
+<!-- PHONE OVERLAY — NEVER REMOVED FROM DOM -->
+<div class="overlay" id="phoneOverlay" hidden>
+
+  <button
+    class="close-button"
+    id="closePhone"
+    aria-label="Close phone"
+  >
+    ×
+  </button>
+
+  <div class="phone-container">
+    <iframe
+      id="kyliePhone"
+      src="https://studio.code.org/projects/applab/cd1989c6-6893-4472-952f-232c411c578c/embed"
+      width="392"
+      height="620"
+      style="border: 0;"
+      title="Kylie's Phone"
+      allow="autoplay"
+    ></iframe>
+  </div>
+
+</div>
+
+</body>
+</html>
