@@ -2,17 +2,30 @@ const ingredients = [
   { id: 'lavender', name: 'Lavender', image: 'lavander.png' },
   { id: 'moonstone', name: 'Moonstone', image: 'moonstone.png' },
   { id: 'rosemary', name: 'Rosemary', image: 'rosemary.png' },
-  { id: 'rubies', name: 'Crushed rubies', image: 'rubies.png' },
+  { id: 'wormwood', name: 'Wormwood', image: 'wormwood.png' },
   { id: 'sage', name: 'Sage', image: 'sage.png' },
   { id: 'salt', name: 'Sea salt', image: 'salt.png' },
   { id: 'knotgrass', name: 'Knotgrass', image: 'knotgrass.png' },
 ];
 
-// Change this sequence to update the puzzle's recipe.
-const recipe = ['salt', 'rubies', 'sage', 'knotgrass', 'moonstone', 'lavender', 'rosemary'];
+const birthstones = [
+  ['january', 'Garnet'], ['february', 'Amethyst'], ['march', 'Aquamarine'],
+  ['april', 'Diamond'], ['may', 'Emerald'], ['june', 'Alexandrite'],
+  ['july', 'Ruby'], ['august', 'Peridot'], ['september', 'Sapphire'],
+  ['october', 'Tourmaline'], ['november', 'Topaz'], ['december', 'Zircon'],
+].map(([month, stone]) => ({
+  id: month,
+  stone,
+  label: `${month[0].toUpperCase()}${month.slice(1)}`,
+  name: `${month[0].toUpperCase()}${month.slice(1)} birthstone (${stone})`,
+  image: `${month}.png`,
+}));
+
+// The curser's birthstone must be the eighth and final ingredient.
+const recipe = ['salt', 'wormwood', 'sage', 'knotgrass', 'moonstone', 'lavender', 'rosemary', 'july'];
 const dialog = document.getElementById('potionDialog');
 const cauldron = document.getElementById('cauldronArt');
-const shelf = document.getElementById('ingredientGrid');
+const shelf = document.getElementById('ingredientShelf');
 const brewButton = document.getElementById('brewPotion');
 const brewingView = document.getElementById('brewingView');
 const resultView = document.getElementById('potionResult');
@@ -26,21 +39,37 @@ let brewTimer = null;
 let added = [];
 let brewResult = null;
 
-for (const ingredient of ingredients) {
-  const button = document.createElement('button');
-  button.className = 'ingredient';
-  button.type = 'button';
-  button.dataset.ingredient = ingredient.id;
-  button.setAttribute('aria-label', `Add ${ingredient.name.toLowerCase()} to the cauldron`);
-  const image = document.createElement('img');
-  image.src = `assets/potionassets/${ingredient.image}`;
-  image.alt = '';
-  const label = document.createElement('span');
-  label.textContent = ingredient.name;
-  button.append(image, label);
-  button.addEventListener('click', () => addIngredient(ingredient));
-  shelf.append(button);
+function renderIngredients(items, grid, cropBirthstones = false) {
+  for (const ingredient of items) {
+    const button = document.createElement('button');
+    button.className = 'ingredient';
+    button.type = 'button';
+    button.dataset.ingredient = ingredient.id;
+    button.setAttribute('aria-label', `Add ${ingredient.name.toLowerCase()} to the cauldron`);
+    const image = document.createElement('img');
+    image.src = `assets/potionassets/${ingredient.image}`;
+    image.alt = '';
+    const label = document.createElement('span');
+    label.textContent = ingredient.label || ingredient.name;
+    if (cropBirthstones) {
+      const stoneLabel = document.createElement('span');
+      stoneLabel.textContent = ingredient.stone;
+      button.append(stoneLabel);
+      const crop = document.createElement('div');
+      crop.className = 'birthstone-crop';
+      crop.append(image);
+      button.append(crop);
+    } else {
+      button.append(image);
+    }
+    button.append(label);
+    button.addEventListener('click', () => addIngredient(ingredient));
+    grid.append(button);
+  }
 }
+
+renderIngredients(ingredients, document.getElementById('ingredientGrid'));
+renderIngredients(birthstones, document.getElementById('birthstoneGrid'), true);
 
 function renderBrew() {
   const complete = brewResult === 'success';
@@ -48,7 +77,7 @@ function renderBrew() {
   resetButton.disabled = phase === 'brewing';
   brewButton.disabled = added.length !== recipe.length || brewResult !== null;
   for (const button of shelf.querySelectorAll('button')) {
-    button.disabled = phase !== 'mixing' || complete || added.includes(button.dataset.ingredient);
+    button.disabled = phase !== 'mixing' || complete || added.length === recipe.length || added.includes(button.dataset.ingredient);
   }
 }
 

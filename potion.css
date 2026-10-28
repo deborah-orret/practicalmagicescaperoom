@@ -33,8 +33,13 @@ h2 { font-weight: normal; font-size: clamp(25px, 4vw, 36px); margin: 8px 0; }
 .brew-button:disabled { opacity: .45; cursor: default; }
 h3 { font-size: 19px; font-weight: normal; margin: 0 0 14px; }
 .ingredient-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.birthstone-shelf { margin-top: 24px; }
 .ingredient { display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 10px; min-width: 0; padding: 12px 6px; border: 0; background: transparent; color: #3a4030; font-size: 20px; transition: transform .2s; }
 .ingredient img { width: 100%; height: 85px; object-fit: contain; }
+.birthstone-shelf .ingredient-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+.birthstone-shelf .ingredient { padding: 4px 2px; gap: 4px; font-size: 16px; }
+.birthstone-crop { width: 100%; height: 54px; overflow: hidden; }
+.birthstone-shelf .birthstone-crop img { display: block; width: 100%; height: 110px; margin-top: -30px; object-fit: contain; }
 .ingredient:hover:enabled { transform: translateY(-3px); }
 .ingredient:disabled { opacity: .45; cursor: default; }
 .ingredient:disabled img { filter: grayscale(1); }

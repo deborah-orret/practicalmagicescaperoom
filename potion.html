@@ -31,10 +31,16 @@
           <button class="brew-button" id="brewPotion" disabled>BREW</button>
           <button class="reset-button" id="resetPotion">RESET</button>
         </section>
-        <section class="ingredient-shelf" aria-labelledby="ingredientsTitle">
-          <h3 id="ingredientsTitle">Ingredients</h3>
-          <div class="ingredient-grid" id="ingredientGrid"></div>
-        </section>
+        <div class="ingredient-shelf" id="ingredientShelf">
+          <section aria-labelledby="ingredientsTitle">
+            <h3 id="ingredientsTitle">Core Ingredients</h3>
+            <div class="ingredient-grid" id="ingredientGrid"></div>
+          </section>
+          <section class="birthstone-shelf" aria-labelledby="birthstonesTitle">
+            <h3 id="birthstonesTitle">Birth Stones</h3>
+            <div class="ingredient-grid" id="birthstoneGrid"></div>
+          </section>
+        </div>
       </div>
       <section class="result-view" id="potionResult" aria-label="Your brewed potion" hidden>
         <img id="potionImage" class="result-image" alt="A freshly brewed potion">
