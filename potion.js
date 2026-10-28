@@ -53,7 +53,8 @@ function renderIngredients(items, grid, cropBirthstones = false) {
     label.textContent = ingredient.label || ingredient.name;
     if (cropBirthstones) {
       const stoneLabel = document.createElement('span');
-      stoneLabel.textContent = ingredient.stone;
+      stoneLabel.textContent = ingredient.label;
+      label.textContent = ingredient.stone;
       button.append(stoneLabel);
       const crop = document.createElement('div');
       crop.className = 'birthstone-crop';
