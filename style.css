@@ -19,6 +19,38 @@ body {
   margin: 0;
 }
 
+.room-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1480px;
+  margin: auto;
+  padding: 16px 8px;
+}
+
+.room-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border: 1px solid #a88b6b;
+  border-radius: 8px;
+  background: #594333;
+  color: #fdfdfc;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.room-link:hover {
+  background: #70543f;
+}
+
+.room-link:focus-visible {
+  outline: 2px solid #fdfdfc;
+  outline-offset: 4px;
+}
+
 /* ==========================================
    HEADER
    ========================================== */

@@ -170,7 +170,7 @@ function openDeskObject(view) {
     // BOOK OF RAVEN
     case "spellbook":
       openImageOverlay(
-        "assets/spellbook.png",
+        "assets/bookofraven.png",
         "Book of Raven"
       );
       break;
