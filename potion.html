@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aunt Gilly's Gardenhouse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Charm&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="potion.css">
+  <script src="potion.js" defer></script>
+</head>
+<body>
+  <header class="garden-header">
+    <a href="index.html">← Back to Kylie's desk</a>
+  </header>
+  <main class="greenhouse">
+    <img class="greenhouse-image" src="assets/potionassets/gillysgreenhouse.png" alt="A sunlit greenhouse with plants, a black cat, and a copper cauldron on the workbench.">
+    <button class="cauldron-hotspot" id="openPotion" aria-label="Open the cauldron"></button>
+  </main>
+  <dialog id="potionDialog" aria-label="Brew a potion">
+    <div class="potion-panel">
+      <button class="close-button" id="closePotion" aria-label="Close potion">×</button>
+      <div class="brewing-layout">
+        <section class="cauldron-area" aria-label="Your potion">
+          <div class="cauldron-art" id="cauldronArt">
+            <div class="potion-glow" aria-hidden="true"></div>
+            <img class="cauldron-image" src="assets/potionassets/cauldron.png" alt="A black cat sitting beside a copper cauldron.">
+          </div>
+          <p id="brewStatus" class="brew-status" role="status" aria-live="polite" aria-atomic="true">The cauldron is ready. Choose your first ingredient.</p>
+          <p id="brewProgress">0 of 7 ingredients added</p>
+          <button class="brew-button" id="brewPotion" disabled>Brew</button>
+          <button class="reset-button" id="resetPotion">Reset</button>
+        </section>
+        <section class="ingredient-shelf" aria-labelledby="ingredientsTitle">
+          <h3 id="ingredientsTitle">Ingredients</h3>
+          <div class="ingredient-grid" id="ingredientGrid"></div>
+        </section>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

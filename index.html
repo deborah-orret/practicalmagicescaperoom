@@ -4,14 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Practical Magic — Kylie's Desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Charm&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 </head>
   
 <body>
   <nav class="room-navigation" aria-label="Explore the house">
-    <a class="room-link" href="library.html">Go to Aunt Franny's Library</a>
-    <a class="room-link" href="gardenhouse.html">Go to Aunt Gilly's Gardenhouse</a>
+    <a class="room-link" href="library.html"><span aria-hidden="true">←</span> Aunt Franny's Library</a>
+    <a class="room-link" href="potion.html">Aunt Gilly's Greenhouse <span aria-hidden="true">→</span></a>
   </nav>
   <main class="page">
     <div class="desk-stage" id="deskStage">

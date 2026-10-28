@@ -5,6 +5,9 @@
   height: 100dvh;
   overflow: hidden;
 }
+.library-header { max-width: 1000px; margin: auto; padding: 22px 24px 16px; text-align: center; }
+.library-header a { color: #f5fbf5; font-family: 'Charm', cursive; }
+.library-header p { line-height: 1.5; }
 
 .library-page main {
   height: 100%;

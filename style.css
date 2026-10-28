@@ -20,30 +20,38 @@ body {
 }
 
 .room-navigation {
+  position: relative;
+  top: 24px;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   gap: 16px;
   max-width: 1480px;
   margin: auto;
-  padding: 16px 8px;
+  padding: 0 8px;
+}
+
+.room-navigation + .page {
+  margin-top: -24px;
 }
 
 .room-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 18px;
-  border: 1px solid #a88b6b;
-  border-radius: 8px;
-  background: #594333;
+  gap: 8px;
+  padding: 0;
+  font-family: 'Charm', cursive;
+  font-size: clamp(18px, 2.4vw, 26px);
   color: #fdfdfc;
   text-align: center;
   text-decoration: none;
-  line-height: 1.4;
+  line-height: 1.1;
 }
 
 .room-link:hover {
-  background: #70543f;
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
 .room-link:focus-visible {
