@@ -132,7 +132,7 @@ function openDeskObject(view) {
 
     case "letterToGina":
       openImageOverlay(
-        "lettertoGina.png",
+        "assets/lettertoGina.png",
         "Letter to Gina"
       );
       break;
@@ -260,31 +260,31 @@ function openFamilyTree() {
           >
 
           <div class="tree-slot" data-slot="1"
-               style="left:19%; top:12%;"></div>
+               style="left:20%; top:16.5%;"></div>
 
           <div class="tree-slot" data-slot="2"
-               style="left:48%; top:12%;"></div>
+               style="left:47.5%; top:16.5%;"></div>
 
           <div class="tree-slot" data-slot="3"
-               style="left:76%; top:12%;"></div>
+               style="left:74.5%; top:16.5%;"></div>
 
           <div class="tree-slot" data-slot="4"
-               style="left:13%; top:40%;"></div>
+               style="left:14%; top:39.5%;"></div>
 
           <div class="tree-slot" data-slot="5"
-               style="left:55%; top:38%;"></div>
+               style="left:52.5%; top:35%;"></div>
 
           <div class="tree-slot" data-slot="6"
-               style="left:75%; top:38%;"></div>
+               style="left:73.5%; top:35%;"></div>
 
           <div class="tree-slot" data-slot="7"
-               style="left:38%; top:40%;"></div>
+               style="left:35%; top:39.5%;"></div>
 
           <div class="tree-slot" data-slot="8"
-               style="left:72%; top:62%;"></div>
+               style="left:72.5%; top:59.5%;"></div>
 
           <div class="tree-slot" data-slot="9"
-               style="left:86%; top:62%;"></div>
+               style="left:86%; top:59.5%;"></div>
 
         </div>
 

@@ -182,6 +182,12 @@ kbd {
 
 /* Close button */
 
+.panel-content:has(.family-tree-panel) {
+  width: 95vw;
+  max-width: 1250px;
+  height: 94vh;
+}
+
 .close-button {
   position: fixed;
   top: 16px;
@@ -288,7 +294,7 @@ kbd {
 .tree-board {
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 850px;
   min-width: 0;
   margin: 0 auto;
 }
@@ -307,8 +313,8 @@ kbd {
 
 .tree-slot {
   position: absolute;
-  width: 14%;
-  aspect-ratio: 1 / 1.25;
+  width: 10.5%;
+  height: 13%;
   transform: translate(-50%, -50%);
   border: 2px solid transparent;
   border-radius: 6px;
@@ -379,7 +385,7 @@ kbd {
 }
 
 .portrait-bank .portrait-card {
-  width: 110px;
+  width: 95px;
   flex-shrink: 0;
 }
 
@@ -480,7 +486,7 @@ kbd {
   }
 
   .portrait-bank .portrait-card {
-    width: 80px;
+    width: 70px;
   }
 
   .family-tree-panel h2 {
