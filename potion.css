@@ -23,9 +23,9 @@ h2 { font-weight: normal; font-size: clamp(25px, 4vw, 36px); margin: 8px 0; }
 .cauldron-area { text-align: center; padding: 20px 0; }
 .cauldron-art { position: relative; isolation: isolate; }
 .cauldron-image { position: relative; display: block; width: 100%; height: auto; }
-.potion-glow { position: absolute; left: 36%; top: 11%; width: 52%; height: 15%; border-radius: 50%; background: #8ea987; filter: blur(12px); opacity: 0; transition: opacity .4s, background .4s; z-index: 1; pointer-events: none; }
-.cauldron-art.brewing .potion-glow { opacity: .65; }
-.cauldron-art.complete .potion-glow { background: #e6be52; opacity: .95; }
+.potion-glow { position: absolute; left: 36%; top: 11%; width: 52%; height: 15%; border-radius: 50%; background: #66ff70; filter: blur(12px); opacity: 0; transition: opacity .4s, background .4s; z-index: 1; pointer-events: none; }
+.cauldron-art.brewing .potion-glow { opacity: .95; }
+
 .brew-status { min-height: 3em; line-height: 1.5; margin: 20px 0 8px; }
 #brewProgress { color: #696347; font-size: 14px; }
 .reset-button { padding: 10px 18px; border: 1px solid #899276; border-radius: 6px; background: transparent; color: #344533; }
@@ -47,3 +47,9 @@ h3 { font-size: 19px; font-weight: normal; margin: 0 0 14px; }
   .garden-header { padding: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+
+[hidden] { display: none !important; }
+.result-view { text-align: center; padding: 30px 0; }
+.result-image { display: block; width: min(100%, 360px); height: 50vh; object-fit: contain; margin: 0 auto 24px; }
+.ending-image { display: block; max-width: 100%; max-height: 70vh; object-fit: contain; margin: auto; }
+.reset-button:disabled { opacity: .45; cursor: default; }

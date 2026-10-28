@@ -221,3 +221,15 @@
   box-shadow: 0 0 8px #e8c783, 0 3px 8px #160c09aa, inset 0 0 8px #a8794555;
 }
 
+
+/* The loose sheet stays aligned with the right-hand book page. */
+.open-book { position: relative; width: min(98vw, 142vh); }
+.library-page .open-book .overlay-image { width: 100%; height: auto; }
+.riddle-sheet { position: absolute; left: 53%; top: 13%; width: 36%; padding: 0; border: 0; background: transparent; cursor: pointer; transform: rotate(2deg); }
+.riddle-sheet img { display: block; width: 100%; height: auto; filter: drop-shadow(3px 5px 5px #0005); }
+.riddle-sheet[hidden] { display: none; }
+.riddle-sheet:focus-visible, .riddle-flip:focus-visible { outline: 2px solid #e6cea1; outline-offset: 4px; }
+.riddle-dialog { width: fit-content; max-width: 94vw; max-height: 94vh; padding: 0; border: 0; background: transparent; overflow: visible; }
+.riddle-dialog::backdrop { background: #0009; }
+.riddle-flip { display: block; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.riddle-flip img { display: block; width: auto; height: auto; max-width: 94vw; max-height: 94vh; filter: drop-shadow(0 10px 20px #0006); }

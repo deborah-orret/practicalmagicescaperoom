@@ -21,22 +21,33 @@
   <dialog id="potionDialog" aria-label="Brew a potion">
     <div class="potion-panel">
       <button class="close-button" id="closePotion" aria-label="Close potion">×</button>
-      <div class="brewing-layout">
+      <div class="brewing-layout" id="brewingView">
         <section class="cauldron-area" aria-label="Your potion">
           <div class="cauldron-art" id="cauldronArt">
             <div class="potion-glow" aria-hidden="true"></div>
             <img class="cauldron-image" src="assets/potionassets/cauldron.png" alt="A black cat sitting beside a copper cauldron.">
           </div>
-          <p id="brewStatus" class="brew-status" role="status" aria-live="polite" aria-atomic="true">The cauldron is ready. Choose your first ingredient.</p>
-          <p id="brewProgress">0 of 7 ingredients added</p>
-          <button class="brew-button" id="brewPotion" disabled>Brew</button>
-          <button class="reset-button" id="resetPotion">Reset</button>
+          <br> <br><br>
+          <button class="brew-button" id="brewPotion" disabled>BREW</button>
+          <button class="reset-button" id="resetPotion">RESET</button>
         </section>
         <section class="ingredient-shelf" aria-labelledby="ingredientsTitle">
           <h3 id="ingredientsTitle">Ingredients</h3>
           <div class="ingredient-grid" id="ingredientGrid"></div>
         </section>
       </div>
+      <section class="result-view" id="potionResult" aria-label="Your brewed potion" hidden>
+        <img id="potionImage" class="result-image" alt="A freshly brewed potion">
+        <div>
+          <button class="brew-button" id="drinkPotion">Drink</button>
+          <button class="reset-button" id="discardPotion">Discard</button>
+        </div>
+      </section>
+      <section class="result-view" id="endGame" aria-label="Potion outcome" hidden>
+        <img id="endGameImage" class="ending-image" alt="">
+        <p id="endGameText" role="status"></p>
+        <button class="reset-button" id="returnToGarden" hidden>Back in Time</button>
+      </section>
     </div>
   </dialog>
 </body>

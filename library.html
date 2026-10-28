@@ -42,7 +42,17 @@
   <!-- SIMPLE IMAGE OVERLAY -->
   <div class="overlay" id="imageOverlay" hidden>
     <button class="close-button" id="closeImageOverlay" aria-label="Close book">×</button>
-    <img id="overlayImage" class="overlay-image" alt="" />
+    <div class="open-book">
+      <img id="overlayImage" class="overlay-image" alt="" />
+      <button class="riddle-sheet" id="riddleSheet" aria-label="Pick up the riddle page" hidden>
+        <img src="assets/libraryassets/frontside.png" alt="Front of the riddle page" />
+      </button>
+    </div>
   </div>
+  <dialog class="riddle-dialog" id="riddleDialog" aria-label="Riddle page">
+    <button class="riddle-flip" id="riddleFlip" aria-label="Turn the page over to the back">
+      <img id="riddleImage" src="assets/libraryassets/frontside.png" alt="Front of the riddle page" />
+    </button>
+  </dialog>
 </body>
 </html>

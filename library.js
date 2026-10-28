@@ -10,6 +10,30 @@ const bookTitleOptions = document.getElementById("bookTitles");
 const toggleBooks = document.getElementById("toggleBooks");
 const librarySearch = document.getElementById("librarySearch");
 const libraryCat = document.getElementById("libraryCat");
+const riddleSheet = document.getElementById("riddleSheet");
+const riddleDialog = document.getElementById("riddleDialog");
+const riddleFlip = document.getElementById("riddleFlip");
+const riddleImage = document.getElementById("riddleImage");
+let riddleBack = false;
+
+function renderRiddle() {
+  riddleImage.src = "assets/libraryassets/" + (riddleBack ? "backside.png" : "frontside.png");
+  riddleImage.alt = (riddleBack ? "Back" : "Front") + " of the riddle page";
+  riddleFlip.setAttribute("aria-label", "Turn the page over to the " + (riddleBack ? "front" : "back"));
+}
+riddleSheet.addEventListener("click", function() {
+  riddleBack = false;
+  renderRiddle();
+  riddleDialog.showModal();
+});
+riddleFlip.addEventListener("click", function() {
+  riddleBack = !riddleBack;
+  renderRiddle();
+});
+riddleDialog.addEventListener("click", function(event) {
+  if (event.target === riddleDialog) riddleDialog.close();
+});
+
 const uniqueTitles = [...new Set(bookTitles)].sort(function(a, b) {
   return a.localeCompare(b);
 });
@@ -124,10 +148,9 @@ async function openBook(title) {
 
   libraryCat.hidden = true;
   const isAlice = title === "Alice in Wonderland";
-  overlayImage.src = isAlice
-    ? "assets/libraryassets/bookwithriddle.png"
-    : "assets/libraryassets/bookwithoutriddle.png";
-  overlayImage.alt = isAlice ? "Open book with a riddle" : "Open book";
+  overlayImage.src = "assets/libraryassets/bookwithoutriddle.png";
+  overlayImage.alt = "Open book";
+  riddleSheet.hidden = !isAlice;
   imageOverlay.hidden = false;
   closeImageOverlay.focus();
 }
@@ -174,6 +197,8 @@ document.addEventListener("click", function(event) {
 
 function closeImage() {
   if (imageOverlay.hidden) return;
+  riddleDialog.close();
+  riddleSheet.hidden = true;
   imageOverlay.hidden = true;
   overlayImage.removeAttribute("src");
   libraryCat.className = "library-cat";
@@ -189,5 +214,12 @@ imageOverlay.addEventListener("click", function(event) {
   if (event.target === imageOverlay) closeImage();
 });
 document.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") closeImage();
+  if (event.key === "Escape") {
+    if (riddleDialog.open) {
+      event.preventDefault();
+      riddleDialog.close();
+    } else {
+      closeImage();
+    }
+  }
 });
