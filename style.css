@@ -19,6 +19,24 @@ body {
   margin: 0;
 }
 
+body.visiting-room {
+  overflow: hidden;
+}
+
+.room-frame {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #201814;
+  z-index: 1100;
+}
+
+.room-frame[hidden] {
+  display: none;
+}
+
 .room-navigation {
   position: relative;
   top: 24px;
@@ -327,6 +345,26 @@ kbd {
   gap: 20px;
   align-items: start;
   width: 100%;
+}
+
+.family-tree-sidebar {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.family-tree-sidebar .primary {
+  width: 100%;
+}
+
+.family-tree-sidebar .primary:focus-visible {
+  outline: 3px solid #594333;
+  outline-offset: 3px;
+}
+
+.family-tree-sidebar #familyTreeFeedback {
+  margin: 0;
 }
 
 /* Vertical family tree */

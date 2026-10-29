@@ -18,6 +18,56 @@ const panelOverlay = document.getElementById("panelOverlay");
 const panelContent = document.getElementById("panelContent");
 const closePanelOverlay = document.getElementById("closePanelOverlay");
 
+// Keep each room loaded, including the desk's embedded phone.
+const roomFrames = new Map();
+const roomPages = {
+  library: { src: "library.html", title: "Aunt Franny's Library" },
+  greenhouse: { src: "potion.html", title: "Aunt Gilly's Greenhouse" }
+};
+const deskNavigation = document.querySelector(".room-navigation");
+const deskMain = document.querySelector("main");
+
+function showCurrentRoom() {
+  const room = window.location.hash.slice(1);
+  const page = Object.prototype.hasOwnProperty.call(roomPages, room) ? roomPages[room] : null;
+  if (page && !roomFrames.has(room)) {
+    const frame = document.createElement("iframe");
+    frame.className = "room-frame";
+    frame.title = page.title;
+    frame.src = page.src;
+    frame.hidden = true;
+    document.body.appendChild(frame);
+    roomFrames.set(room, frame);
+  }
+  roomFrames.forEach(function(frame, name) {
+    frame.hidden = name !== room;
+  });
+  deskNavigation.inert = Boolean(page);
+  deskMain.inert = Boolean(page);
+  document.body.classList.toggle("visiting-room", Boolean(page));
+  if (page) roomFrames.get(room).focus();
+}
+
+deskNavigation.querySelectorAll("a").forEach(function(link) {
+  const room = Object.keys(roomPages).find(function(name) {
+    return link.getAttribute("href") === roomPages[name].src;
+  });
+  if (room) link.href = "#" + room;
+});
+
+window.addEventListener("hashchange", showCurrentRoom);
+window.addEventListener("message", function(event) {
+  const fromRoom = Array.from(roomFrames.values()).some(function(frame) {
+    return event.source === frame.contentWindow;
+  });
+  if (fromRoom && event.data && event.data.type === "return-to-desk") {
+    window.location.hash = "";
+    showCurrentRoom();
+    deskNavigation.querySelector("a").focus();
+  }
+});
+showCurrentRoom();
+
 // ==========================================
 // IMAGE POPUPS
 // ==========================================
@@ -231,7 +281,16 @@ const familyMembers = [
 ];
 
 
+// Keep the puzzle and its event listeners in memory until the page reloads.
+let savedFamilyTreePanel = null;
+
 function openFamilyTree() {
+
+  if (savedFamilyTreePanel) {
+    panelContent.replaceChildren(savedFamilyTreePanel);
+    panelOverlay.hidden = false;
+    return;
+  }
 
   const portraits = familyMembers.map(function(member) {
     return `
@@ -288,8 +347,12 @@ function openFamilyTree() {
 
         </div>
 
-        <div class="portrait-bank" id="portraitBank">
-          ${portraits}
+        <div class="family-tree-sidebar">
+          <div class="portrait-bank" id="portraitBank">
+            ${portraits}
+          </div>
+          <button type="button" class="primary" id="checkFamilyTree">Check tree</button>
+          <p id="familyTreeFeedback" role="status" aria-live="polite"></p>
         </div>
 
       </div>
@@ -297,6 +360,7 @@ function openFamilyTree() {
   `);
 
   initializeFamilyTree();
+  savedFamilyTreePanel = panelContent.querySelector(".family-tree-panel");
 }
 
 // ==========================================
@@ -308,6 +372,35 @@ function initializeFamilyTree() {
 
   const slots = document.querySelectorAll(".tree-slot");
   const bank = document.getElementById("portraitBank");
+  const feedback = document.getElementById("familyTreeFeedback");
+
+  document.getElementById("checkFamilyTree").addEventListener("click", function() {
+    const answerKey = {
+      1: "maria",
+      2: "vincent",
+      3: "lillian",
+      4: "regina",
+      7: "daniel",
+      5: "jet",
+      6: "frances"
+    };
+    const placements = {};
+    slots.forEach(function(slot) {
+      const card = slot.querySelector(".portrait-card");
+      placements[slot.dataset.slot] = card ? card.dataset.member : null;
+    });
+
+    const upperRowsCorrect = Object.entries(answerKey).every(function(entry) {
+      return placements[entry[0]] === entry[1];
+    });
+    const bottomRowCorrect =
+      (placements[8] === "gina" && placements[9] === "kylie") ||
+      (placements[8] === "kylie" && placements[9] === "gina");
+
+    feedback.textContent = upperRowsCorrect && bottomRowCorrect
+      ? "Right!"
+      : "Wrong. Try again.";
+  });
 
   // Start dragging a portrait
   document.querySelectorAll(".portrait-card").forEach(function(card) {
@@ -365,6 +458,7 @@ function initializeFamilyTree() {
       }
 
       slot.appendChild(draggedCard);
+      feedback.textContent = "";
     });
   });
 
@@ -385,6 +479,7 @@ function initializeFamilyTree() {
 
     if (card) {
       bank.appendChild(card);
+      feedback.textContent = "";
     }
   });
 }
